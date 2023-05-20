@@ -1,2 +1,2 @@
 # WebAcademy
-Repositório para alguns exercícios realizados no projeto Web Academy
+Repositório de exercícios passados pelo prof.David no projeto Web Academy - Backend
