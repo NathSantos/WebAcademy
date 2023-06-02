@@ -19,9 +19,8 @@ const lorem = (req: Request, res: Response) => {
 }
 
 const hb1 = (req: Request, res: Response) => {
-    res.render('hb1', {
-        mensagem: 'Olá, você está aprendendo Express + HBS!',
-        layout: false 
+    res.render('main/hb1', {
+        mensagem: 'Olá, você está aprendendo Express + HBS!'
     });
 }
 
@@ -32,18 +31,14 @@ const hb2 = (req: Request, res: Response) => {
         { nome: 'Edleno Moura', sala: 1236 },
         { nome: 'Elaine Harada', sala: 1231 }
     ];
-    res.render('hb2', {
-        profs,
-        layout: false
-    });
+    res.render('main/hb2', { profs });
 }
 
 const hb3 = (req: Request, res: Response) => {
-    res.render('hb3', {
+    res.render('main/hb3', {
         nome: 'Express',
         tipo: 'framework',
-        poweredByNodejs: true,
-        layout: false
+        poweredByNodejs: true
     });
 }
 
@@ -54,7 +49,7 @@ const hb4 = function (req: Request, res: Response) {
         { nome: 'Edleno Moura', sala: 1236 },
         { nome: 'Elaine Harada', sala: 1231 }
     ];
-    res.render('hb4', { profs, layout: false });
+    res.render('main/hb4', { profs });
 }
 
 const hb5 = function (req: Request, res: Response) {
@@ -67,7 +62,7 @@ const hb5 = function (req: Request, res: Response) {
         { nome: 'Docker', tipo: 'Virtualization', poweredByNodejs: false },
         { nome: 'Sequelize', tipo: 'ORM tool', poweredByNodejs: true },
     ];
-    res.render('hb5', { technologies, layout: false });
+    res.render('main/hb5', { technologies });
 }
 
 export default { bemvindo, page, index, lorem, hb1, hb2, hb3, hb4, hb5};
