@@ -4,6 +4,7 @@ import validateEnv from './utils/validateEnv'
 import dotenv from 'dotenv'
 import logger from './middlewares/logger'
 import router from './router/router'
+import { engine } from 'express-handlebars'
 
 dotenv.config();
 validateEnv();
@@ -13,6 +14,12 @@ const app = express();
 const publicPath = `${process.cwd()}/public`;
 
 app.use(express.urlencoded({ extended: true }));    // Permite que o servidor interprete os dados enviados pelo formulário
+
+app.engine('handlebars', engine({
+  helpers: require(`${__dirname}/views/helpers/helpers.ts`)
+}));
+app.set('view engine', 'handlebars');
+app.set('views', `${__dirname}/views`);
 
 app.use(logger('completo'));
 app.use(router);

@@ -1,23 +1,18 @@
 import { Router, Request, Response } from 'express'
+import mainController from '../controllers/main';
+import main from '../controllers/main';
 
 const router = Router();
-const publicPath = `${process.cwd()}/public`;
 
-router.get('bemvindo/:nome', (req, res) => {
-    res.send(req.params.nome);
-});
-
-router.get('/page', (req, res) => {
-    res.sendFile(`${publicPath}/html/index.html`);
-});
-
-router.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
-});
-
-// Define a rota raiz
-router.get('/lorem', (req, res) => {                    
-    res.sendFile(`${publicPath}/html/index.html`);
-});
+// Main controller
+router.get('/', mainController.index);
+router.get('bemvindo/:nome', mainController.bemvindo);
+router.get('/page', mainController.page);
+router.get('/lorem', mainController.lorem);
+router.get('/hb1', mainController.hb1);
+router.get('/hb2', mainController.hb2);
+router.get('/hb3', mainController.hb3);
+router.get('/hb4', mainController.hb4);
+router.get('/hb5', mainController.hb5);
 
 export default router;      // router é um middleware
