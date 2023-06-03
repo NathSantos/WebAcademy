@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import logger from './middlewares/logger'
 import router from './router/router'
 import { engine } from 'express-handlebars'
+import sass from 'node-sass-middleware'
 
 dotenv.config();
 validateEnv();
@@ -20,6 +21,15 @@ app.engine('handlebars', engine({
 }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views`);
+
+app.use(sass({
+  src: `${publicPath}/scss`,
+  dest: `${publicPath}/css`,
+  outputStyle: "compressed",
+  prefix: "/css",
+}));
+
+app.use("/css", express.static(`${publicPath}/css`));
 
 app.use(logger('completo'));
 app.use(router);
