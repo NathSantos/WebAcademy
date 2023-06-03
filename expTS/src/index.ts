@@ -35,7 +35,11 @@ app.use(logger('completo'));
 app.use(router);
 
 app.use('/css', express.static(`${publicPath}/css`));
-app.use('/js', express.static(`${publicPath}/js`));
+app.use('/js', [
+  express.static(`${publicPath}/js`),                               // se não achar aqui
+  express.static(`${__dirname}/../node_modules/bootstrap/dist/js`)  // procura aqui
+]);
+app.use('/webfonts', express.static(`${__dirname}/../node_modules/@fortawesome/fontawesome-free/webfonts`)); // sempre que o browser digitar 'webfonts', vai pegar esse diretório 
 
 app.use((req, res, next) => {
   console.log(`Requisição ${req.method} em ${req.url}`);
